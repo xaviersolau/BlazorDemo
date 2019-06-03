@@ -1,21 +1,10 @@
-﻿@using Microsoft.JSInterop;
-
-@inject IJSRuntime jsRuntime;
+﻿
+@inherits Component1Base
 
 <div class="my-component">
-    This Blazor component is defined in the <strong>BlazorLib</strong> package.
+    This Blazor component is defined in the <strong>BlazorLib</strong> package and the Message is <strong>@Message</strong>.
 </div>
+
 <button class="btn btn-primary" onclick="@CallExampleJsInterop">Click me to use JS Interop!</button>
 
-<p>Message from JS: @jsMessage</p>
-
-@functions {
-
-    string jsMessage = string.Empty;
-
-    async Task CallExampleJsInterop()
-    {
-        jsMessage = await ExampleJsInterop.Prompt(jsRuntime, "Message from .Net!");
-    }
-
-}
+<p>Message from JS: @JsMessage</p>
