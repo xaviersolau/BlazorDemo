@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Logging;
 using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,9 @@ namespace BlazorLib
         [Inject]
         private IJSRuntime JsRuntime { get; set; }
 
+        [Inject]
+        private ILogger<Component1Base> Logger { get; set; }
+
         [Parameter]
         protected string Message { get; set; } = string.Empty;
 
@@ -19,7 +23,9 @@ namespace BlazorLib
 
         protected async Task CallExampleJsInterop()
         {
+            Logger.LogInformation("Processing JS interop...");
             JsMessage = await ExampleJsInterop.Prompt(JsRuntime, "Message from .Net!");
+            Logger.LogInformation($"JS interop returned {JsMessage}");
         }
     }
 }
