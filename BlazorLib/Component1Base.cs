@@ -17,7 +17,7 @@ namespace BlazorLib
         private ILogger<Component1Base> Logger { get; set; }
 
         [Parameter]
-        protected string Message { get; set; } = string.Empty;
+        public string Message { get; set; } = string.Empty;
 
         protected string JsMessage { get; set; } = string.Empty;
 
