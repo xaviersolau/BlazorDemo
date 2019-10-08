@@ -1,16 +1,19 @@
 ﻿@page "/counter"
 
-<h1>Counter</h1>
+@using SoloX.ActionDispatch.Core.Dispatch;
 
-<p>Current count: @currentCount</p>
+@using BlazorDemo.Client.State;
+@using BlazorLib.State;
+@using BlazorLib;
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+@inject IDispatcher<IAppState> Dispatcher;
 
-@code {
-    int currentCount = 0;
+<MyCounter Dispatcher="CreateMyCounterDispatcher()" />
 
-    void IncrementCount()
+@code
+{
+    IRelativeDispatcher<IMyCounterState> CreateMyCounterDispatcher()
     {
-        currentCount++;
+        return Dispatcher.CreateRelativeDispatcher(s => s.Counter.MyCounter);
     }
 }
