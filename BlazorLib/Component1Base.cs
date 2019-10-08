@@ -21,7 +21,7 @@ namespace BlazorLib
 
         protected string JsMessage { get; set; } = string.Empty;
 
-        protected async Task CallExampleJsInterop()
+        public async Task CallExampleJsInterop()
         {
             Logger.LogInformation("Processing JS interop...");
             JsMessage = await ExampleJsInterop.Prompt(JsRuntime, "Message from .Net!");

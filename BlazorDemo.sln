@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDemo.Client", "Blazor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDemo.Shared", "BlazorDemo.Shared\BlazorDemo.Shared.csproj", "{4BF9B8A2-032A-449B-ACB0-BC5EE11C1A3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerSideBlazor", "ServerSideBlazor\ServerSideBlazor.csproj", "{CF24EEA3-4027-4515-BA1A-21BB719DB1E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerSideBlazor", "ServerSideBlazor\ServerSideBlazor.csproj", "{CF24EEA3-4027-4515-BA1A-21BB719DB1E2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLib", "BlazorLib\BlazorLib.csproj", "{15F3A313-350E-4D33-B169-A46A1D5B0BA3}"
 EndProject
