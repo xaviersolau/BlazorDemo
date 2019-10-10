@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BlazorDemo.Client.State
+namespace BlazorDemo.WebApp.State
 {
     public interface ICounterState : IState
     {

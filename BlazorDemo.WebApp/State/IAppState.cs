@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ServerSideBlazor.State
+namespace BlazorDemo.WebApp.State
 {
     public interface IAppState : IState
     {

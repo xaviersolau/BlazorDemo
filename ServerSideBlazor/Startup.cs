@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BlazorLib.State;
+using BlazorDemo.Shared;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -10,9 +11,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ServerSideBlazor.Data;
-using ServerSideBlazor.State;
 using SoloX.ActionDispatch.Core;
 using SoloX.ActionDispatch.Core.State;
+using BlazorDemo.WebApp.State;
 
 namespace ServerSideBlazor
 {
@@ -24,9 +25,10 @@ namespace ServerSideBlazor
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
 
-            services.AddSingleton<IStateFactoryProvider, Impl.StateFactoryProvider>();
+            services.AddSingleton<IWeatherForcastService, WeatherForecastService>();
+
+            services.AddSingleton<IStateFactoryProvider, BlazorDemo.WebApp.Impl.StateFactoryProvider>();
             services.AddSingleton<IStateFactoryProvider, BlazorLib.Impl.StateFactoryProvider>();
 
             services.AddActionDispatchSupport(
@@ -42,7 +44,6 @@ namespace ServerSideBlazor
 
                     return state;
                 });
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,3 +1,4 @@
+using BlazorDemo.Shared;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
@@ -5,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ServerSideBlazor.Data
 {
-    public class WeatherForecastService
+    public class WeatherForecastService : IWeatherForcastService
     {
         private ILogger<WeatherForecastService> logger;
 
@@ -23,7 +24,6 @@ namespace ServerSideBlazor.Data
 
         public Task<WeatherForecast[]> GetForecastAsync(DateTime startDate)
         {
-
             this.logger.LogInformation("Get weather...");
 
             var rng = new Random();

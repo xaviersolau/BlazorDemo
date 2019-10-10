@@ -1,0 +1,19 @@
+﻿@page "/counter"
+
+@using SoloX.ActionDispatch.Core.Dispatch;
+
+@using BlazorDemo.WebApp.State;
+@using BlazorLib.State;
+@using BlazorLib;
+
+@inject IDispatcher<IAppState> Dispatcher;
+
+<MyCounter Dispatcher="CreateMyCounterDispatcher()" />
+
+@code
+{
+    IRelativeDispatcher<IMyCounterState> CreateMyCounterDispatcher()
+    {
+        return Dispatcher.CreateRelativeDispatcher(s => s.Counter.MyCounter);
+    }
+}

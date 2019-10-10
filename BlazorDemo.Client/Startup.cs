@@ -1,10 +1,12 @@
-using BlazorDemo.Client.State;
-using BlazorLib.State;
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using BlazorLib.State;
+using BlazorDemo.WebApp.State;
 using SoloX.ActionDispatch.Core;
 using SoloX.ActionDispatch.Core.State;
+using BlazorDemo.Client.Client;
+using BlazorDemo.Shared;
 
 namespace BlazorDemo.Client
 {
@@ -12,7 +14,9 @@ namespace BlazorDemo.Client
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IStateFactoryProvider, Impl.StateFactoryProvider>();
+            services.AddSingleton<IWeatherForcastService, WeatherForcastClient>();
+
+            services.AddSingleton<IStateFactoryProvider, BlazorDemo.WebApp.Impl.StateFactoryProvider>();
             services.AddSingleton<IStateFactoryProvider, BlazorLib.Impl.StateFactoryProvider>();
 
             services.AddActionDispatchSupport(

@@ -1,0 +1,28 @@
+﻿@page "/"
+
+@using SoloX.ActionDispatch.Core.Dispatch;
+
+@using BlazorDemo.WebApp.State;
+@using BlazorLib.State;
+@using BlazorLib;
+
+@inject IDispatcher<IAppState> Dispatcher;
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+
+<Component1 Message="Message from Client-side blazor application" />
+
+<MyCounter Dispatcher="CreateMyCounterDispatcher()" />
+
+@code
+{
+    IRelativeDispatcher<IMyCounterState> CreateMyCounterDispatcher()
+    {
+        return Dispatcher.CreateRelativeDispatcher(s => s.MyCounter);
+    }
+}
