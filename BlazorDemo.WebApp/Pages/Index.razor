@@ -19,10 +19,31 @@ Welcome to your new app.
 
 <MyCounter Dispatcher="CreateMyCounterDispatcher()" />
 
+<p>
+    Here is some text updated asynchronously: @asyncMessage
+</p>
+
 @code
 {
+    string asyncMessage;
+
     IRelativeDispatcher<IMyCounterState> CreateMyCounterDispatcher()
     {
         return Dispatcher.CreateRelativeDispatcher(s => s.MyCounter);
+    }
+
+    protected override void OnInitialized()
+    {
+        Task.Run(BckGndTask);
+    }
+
+    private async void BckGndTask()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            await Task.Delay(1000);
+            asyncMessage = $"background process {i}";
+            await this.InvokeAsync(this.StateHasChanged);
+        }
     }
 }
