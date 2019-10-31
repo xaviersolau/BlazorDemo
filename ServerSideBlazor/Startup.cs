@@ -13,7 +13,9 @@ using Microsoft.Extensions.Hosting;
 using ServerSideBlazor.Data;
 using SoloX.ActionDispatch.Core;
 using SoloX.ActionDispatch.Core.State;
+using SoloX.ActionDispatch.Json.State;
 using BlazorDemo.WebApp.State;
+using System.Threading;
 
 namespace ServerSideBlazor
 {
@@ -38,12 +40,16 @@ namespace ServerSideBlazor
                     state.Counter = factory.Create<ICounterState>();
                     state.Counter.MyCounter = factory.Create<IMyCounterState>();
                     state.MyCounter = factory.Create<IMyCounterState>();
+                    state.WeatherState = factory.Create<IWeatherState>();
 
                     state.Counter.MyCounter.Count = 5;
                     state.MyCounter.Count = 15;
 
                     return state;
-                });
+                },
+                ServiceLifetime.Scoped, true);
+
+            services.AddActionDispatchStateJsonSupport();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

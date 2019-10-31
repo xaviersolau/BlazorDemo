@@ -1,5 +1,12 @@
 ﻿@page "/fetchdata"
 @using BlazorDemo.Shared
+@using BlazorDemo.WebApp.State
+@using BlazorDemo.WebApp.Action;
+@using SoloX.ActionDispatch.Core.Dispatch
+@using SoloX.ActionDispatch.Core.Utils
+@using System.Threading
+
+@inject IDispatcher<IAppState> Dispatcher;
 
 @inject IWeatherForcastService WeatherForcastService
 
@@ -37,10 +44,18 @@ else
 }
 
 @code {
-    WeatherForecast[] forecasts;
 
-    protected override async Task OnInitializedAsync()
+    IEnumerable<WeatherForecast> forecasts;
+
+    protected override void OnInitialized()
     {
-        forecasts = await WeatherForcastService.GetForecastAsync(DateTime.Now);
+        this.Dispatcher.Dispatch(new LoadWeatherForcastBehavior(WeatherForcastService), s => s.WeatherState);
+
+        var subscription = Dispatcher.State.SelectWhenChanged(s => s.WeatherState).Subscribe((s) =>
+        {
+            forecasts = s.Forecasts;
+
+            this.StateHasChanged();
+        });
     }
 }

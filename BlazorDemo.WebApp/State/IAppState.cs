@@ -9,6 +9,7 @@ namespace BlazorDemo.WebApp.State
 {
     public interface IAppState : IState
     {
+        IWeatherState WeatherState { get; set; }
         ICounterState Counter { get; set; }
         IMyCounterState MyCounter { get; set; }
     }
