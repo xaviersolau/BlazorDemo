@@ -33,21 +33,9 @@ namespace ServerSideBlazor
             services.AddSingleton<IStateFactoryProvider, BlazorDemo.WebApp.Impl.StateFactoryProvider>();
             services.AddSingleton<IStateFactoryProvider, BlazorLib.Impl.StateFactoryProvider>();
 
-            services.AddActionDispatchSupport(
-                factory =>
-                {
-                    var state = factory.Create<IAppState>();
-                    state.Counter = factory.Create<ICounterState>();
-                    state.Counter.MyCounter = factory.Create<IMyCounterState>();
-                    state.MyCounter = factory.Create<IMyCounterState>();
-                    state.WeatherState = factory.Create<IWeatherState>();
+            services.AddSingleton<IInitialStateFactory<IAppState>, InitialStateFactory>();
 
-                    state.Counter.MyCounter.Count = 5;
-                    state.MyCounter.Count = 15;
-
-                    return state;
-                },
-                ServiceLifetime.Scoped, true);
+            services.AddActionDispatchSupport<IAppState>(ServiceLifetime.Scoped, true);
 
             services.AddActionDispatchStateJsonSupport();
         }

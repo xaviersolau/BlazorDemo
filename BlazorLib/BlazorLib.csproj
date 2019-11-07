@@ -22,8 +22,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.0.0" />
-    <PackageReference Include="SoloX.ActionDispatch.Core" Version="1.0.0-alpha.14" />
-    <PackageReference Include="SoloX.ActionDispatch.State.Build" Version="1.0.0-alpha.14" />
+    <PackageReference Include="SoloX.ActionDispatch.Core" Version="1.0.0-alpha.15" />
+    <PackageReference Include="SoloX.ActionDispatch.State.Build" Version="1.0.0-alpha.15" />
   </ItemGroup>
 
 </Project>
