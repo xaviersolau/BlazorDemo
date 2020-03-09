@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -7,10 +7,18 @@
     <base href="/" />
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/site.css" rel="stylesheet" />
+
+    <!-- For now we need to manually add the link elements for all lib comonents -->
+    <link href="_content/blazorlib/styles.css" rel="stylesheet" />
+
 </head>
 <body>
     <app>Loading...</app>
 
     <script src="_framework/blazor.webassembly.js"></script>
+
+    <!-- For now we need to manually add the script elements for all lib comonents -->
+    <script src="_content/blazorlib/exampleJsInterop.js"></script>
+
 </body>
 </html>
