@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Blazor.Hosting;
+﻿using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using BlazorDemo.WebApp.State;
 using SoloX.ActionDispatch.Core;
@@ -26,6 +26,8 @@ namespace BlazorDemo.Client
 
         private static void ConfigureServices(IServiceCollection services)
         {
+            services.AddBaseAddressHttpClient();
+
             services.AddSingleton<IWeatherForcastService, WeatherForcastClient>();
 
             services.AddSingleton<IStateFactoryProvider, BlazorDemo.WebApp.Impl.StateFactoryProvider>();

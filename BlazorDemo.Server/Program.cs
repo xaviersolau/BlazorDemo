@@ -17,6 +17,7 @@ namespace BlazorDemo.Server
                     .AddCommandLine(args)
                     .Build())
                 .UseStartup<Startup>()
+                .UseStaticWebAssets()
                 .Build();
     }
 }
